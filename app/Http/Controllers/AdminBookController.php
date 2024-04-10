@@ -88,6 +88,9 @@ public function update(Request $request, Book $book)
     // Update the returned_by field only if a returner is selected
     if ($request->has('returned_by')) {
         $bookData['returned_by'] = $request->input('returned_by');
+        
+        // Set the returned_date to the current date
+        $bookData['returned_date'] = now(); // Assuming you're using Laravel's Carbon for dates
     }
 
     $book->update($bookData);
