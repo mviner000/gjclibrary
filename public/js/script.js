@@ -75,3 +75,15 @@ window.onload = function() {
       }
   }
 }
+
+// maximum characters 255 for creating quote contents
+
+document.getElementById('content').addEventListener('input', function() {
+  var maxLength = 255;
+  var currentLength = this.value.length;
+  var remainingLength = maxLength - currentLength;
+  document.getElementById('characterCount').textContent = 'Remaining characters: ' + remainingLength;
+  if (remainingLength < 0) {
+      document.getElementById('characterCount').textContent = 'Exceeded ' + Math.abs(remainingLength) + ' characters';
+  }
+});

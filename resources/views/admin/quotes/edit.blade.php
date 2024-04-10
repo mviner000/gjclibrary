@@ -18,6 +18,10 @@
                         <div class="form-group mb-3">
                             <label for="content">Content</label>
                             <textarea class="form-control" id="content" name="content" required>{{ $quote->content }}</textarea>
+                            <div id="characterCount" class="form-text text-muted">Max 255 characters</div>
+                            <div id="exceedError" class="alert alert-danger collapse" role="alert">
+                                Exceeded maximum character limit!
+                            </div>
                         </div>
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('admin.quotes.index') }}" class="btn btn-secondary">Back</a>
@@ -29,4 +33,5 @@
         </div>
     </div>
 </div>
+
 @endsection
