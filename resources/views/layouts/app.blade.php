@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome/brands.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome/solid.min.css') }}">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
    </head>
@@ -75,7 +76,6 @@
     <main class="py-4">
         @yield('content')
     </main>
-
 
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
