@@ -1,4 +1,5 @@
 @extends('layouts.app', ['title' => 'GJCLibrary - Dashboard'])
+@include('components.navbar')
 
 @section('content')
 @php

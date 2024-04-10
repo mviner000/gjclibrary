@@ -17,7 +17,7 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('signin');
 });
 
 // Route::get('/dashboard', function () {

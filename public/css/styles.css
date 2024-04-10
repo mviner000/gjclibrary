@@ -126,3 +126,7 @@ margin-right: 10px;
   background: #FFF; /* White background on hover */
   color: #000; /* Black text on hover */
 }
+
+.logout-btn:hover {
+  background-color: #dc3545; /* Bootstrap's danger color */
+}
