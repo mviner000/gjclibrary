@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.books.index');
     // Book routes
     Route::resource('admin/books', AdminBookController::class)->names([
         'index' => 'admin.books.index',

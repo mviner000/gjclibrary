@@ -1,21 +1,18 @@
 <!-- navbar -->
-<nav class="navbar navbar-light bg-light mx-2" id="navbar">
+<nav class="navbar navbar-light bg-light" id="navbar">
        
        <div class="d-flex justify-content-between w-100">
            <div class="d-flex align-items-center">
                <button onclick="openNav()" class="openbtn openbtn-custom-style" id="menuButton">☰</button>
                <img src="{{ asset('images/gjc_logo.png') }}" alt="GJC Logo" class="logo-image mr-1" style="width: 34px;">
-               <a class="navbar-brand" href="">GJC Library - Admin Panel</a>
+               <a class="navbar-brand" href="/"> GJC {{ $navbarTitle ?? 'Library' }}</a>
            </div>
-           <div class="text-center d-none d-md-block"> <!-- Added d-none d-md-block classes here -->
-           <div class="input-group mt-2">
-               <input type="text" class="form-control " placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-               <div class="input-group-append">
-                   <button class="btn btn-secondary" type="button" id="button-addon2">
-                       <i class="fa-solid fa-search"></i>
-                   </button>
-               </div>
-           </div>
+           <div class="text-center d-none d-md-block mt-3"> <!-- Added d-none d-md-block classes here -->
+                <div class="input-group mb-3">
+                <input type="text" class="form-control input-lg" style="width: 350px;" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button"> <i class="fa-solid fa-search"></i></button>
+            </div>
+
        </div>
        <!-- User avatar -->
        <div class="d-flex align-items-center">

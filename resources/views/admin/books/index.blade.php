@@ -1,5 +1,11 @@
 @extends('layouts.app', ['title' => 'GJCLibrary - Dashboard'])
-@include('components.navbar')
+
+@if(Request::is('small-devices'))
+    @include('components.navbar', ['navbarTitle' => config('app.name', 'GJCLibrary')])
+@else
+    @include('components.navbar', ['navbarTitle' => 'Library Admin Panel'])
+@endif
+
 
 @section('content')
 @php
@@ -11,6 +17,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+        <h1>
+                @if(Request::is('small-devices'))
+                    This is a small device
+                @else
+                    This is a large device
+                @endif
+            </h1>
             <div class="d-flex align-items-center mb-3">
                 <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Borrow a Book</a>
             </div>
@@ -46,7 +59,6 @@
                                 <td>{{ $sortByType === 'Borrower' ? ($book->borrowedBy ? $book->borrowedBy->name : $borrowerNullDataMessage) : ($book->returnedBy ? $book->returnedBy->name : $returnerNullDataMessage) }}</td>
                                 <td>{{ $sortByType === 'Borrower' ? ($book->borrowed_date ?: $borrowerNullDataMessage) : ($book->returned_date ?: $returnerNullDataMessage) }}</td>
                                 <td>
-                                    <div class="d-flex">
                                         <a href="{{ route('admin.books.edit', $book) }}" class="btn btn-outline-success me-2">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -57,7 +69,6 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
-                                    </div>
                                 </td>
                             </tr>
                         @endforeach
