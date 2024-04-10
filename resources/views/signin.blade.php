@@ -19,8 +19,20 @@
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="{{ asset('images/gjc_library_logo.png') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
             <h1 style="margin-top: -50px;">Welcome Back GJCian</h1>
-            <p class="text-muted mb-0">Quote of the Day.</p>
-            <p class="font-italic text-muted mb-0">Today is hard, tomorrow will be worse, but the day after tomorrow will be sunshine. What you do today can improve all your tomorrows.</p>
+
+
+            <p class="text-muted mb-0">Quote of the Day:</p>
+            @if($latestQuote)
+                    <p class="font-italic text-muted mb-0"><em>{{ $latestQuote->content }}</em>
+                    @if($latestQuote->author)
+                        - {{ $latestQuote->author }}
+                    @endif
+                    </p>
+            @else
+                <p class="font-italic text-muted mb-0">No quotes available</p>
+            @endif
+
+            
         </div>
 
         <!-- Signin Form -->

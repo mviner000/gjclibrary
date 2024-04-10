@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminQuoteController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Quote;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,8 +19,13 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    return view('signin');
+    $latestQuote = Quote::latest()->first(); // Get the latest quote
+    return view('signin', compact('latestQuote'));
 });
+
+// Route::get('/', function () {
+//     return view('signin');
+// });
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
@@ -37,11 +44,19 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'admin.books.destroy',
     ]);
 
+    // Quote routes
+    Route::resource('admin/quotes', AdminQuoteController::class)->names([
+        'index' => 'admin.quotes.index',
+        'create' => 'admin.quotes.create',
+        'store' => 'admin.quotes.store',
+        'edit' => 'admin.quotes.edit',
+        'update' => 'admin.quotes.update',
+        'destroy' => 'admin.quotes.destroy',
+    ]);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    
     
     // Define a custom route to show a book using its slug
     Route::get('admin/books/{slug}', [AdminBookController::class, 'show'])->name('admin.books.show');

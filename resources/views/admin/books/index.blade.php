@@ -15,10 +15,15 @@
 @endphp
 
 <div class="container">
+<nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Admin Panel |</li>
+    <li class="breadcrumb-item "><a href="{{ route('admin.quotes.index') }}">Quotes</a></li>
+  </ol>
+</nav>
     <div class="row justify-content-center">
         <div class="col-md-12">
-        <h1>
-            </h1>
+        <h1>{{ $sortByText }}</h1>
             <!-- <div class="d-flex align-items-center mb-3">
                 <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Borrow a Book</a>
             </div> -->
