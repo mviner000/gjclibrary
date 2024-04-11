@@ -93,7 +93,7 @@
 
         <!-- Doesn't Have an Account -->
         <div class="text-center w-100">
-            <p class="text-muted font-weight-bold">Don't have an account? <a href="{{ route('signup') }}" class="text-primary ml-2">Register Now</a></p>
+            <p class="text-muted font-weight-bold">Don't have an account? <a href="" class="text-primary ml-2">Contact Admin</a></p>
         </div>
     </form>
 </div>
