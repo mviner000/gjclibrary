@@ -18,19 +18,17 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+
+
 Route::get('/', function () {
     $latestQuote = Quote::latest()->first(); // Get the latest quote
     return view('signin', compact('latestQuote'));
 });
 
-// Route::get('/', function () {
-//     return view('signin');
-// });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('admin.books.index');
-
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.books.index');

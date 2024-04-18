@@ -58,7 +58,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="">Books</a>
         <a href="">Categories</a>
-        <a href="">About</a>
+        <a href={{ route('about') }}>About</a>
         <a href="">Team</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
