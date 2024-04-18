@@ -18,6 +18,9 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+Route::get('/users', function () {
+    return Inertia::render('FetchUser');
+});
 
 
 Route::get('/', function () {
