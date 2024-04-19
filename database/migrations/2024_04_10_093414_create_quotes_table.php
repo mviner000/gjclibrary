@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quotes', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->id(); // Change to UUID
+            $table->uuid('created_by')->nullable(); // Change to UUID
+            $table->uuid('updated_by')->nullable(); // Change to UUID
             $table->text('content')->nullable();
             $table->string('author')->nullable();
             $table->timestamps();
-
+        
             // Foreign key constraints
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
-      
         });
+        
     }
 
     /**

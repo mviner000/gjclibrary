@@ -17,16 +17,17 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('borrowed_by')->nullable();
-            $table->unsignedBigInteger('returned_by')->nullable();
+            $table->uuid('borrowed_by')->nullable();
+            $table->uuid('returned_by')->nullable();
             $table->dateTime('borrowed_date')->nullable();
             $table->dateTime('returned_date')->nullable();
             $table->timestamps();
-
+        
             // Foreign key constraints
             $table->foreign('borrowed_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('returned_by')->references('id')->on('users')->onDelete('set null');
         });
+        
     }
 
     /**
