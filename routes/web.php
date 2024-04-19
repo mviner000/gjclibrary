@@ -23,6 +23,11 @@ Route::get('/users', function () {
 });
 
 
+Route::get('/books', function () {
+    return Inertia::render('FetchBook');
+});
+
+
 Route::get('/', function () {
     $latestQuote = Quote::latest()->first(); // Get the latest quote
     return view('signin', compact('latestQuote'));
