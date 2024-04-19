@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { useToast } from "@/Components/ui/use-toast";
 import { ToastAction } from "@/Components/ui/toast";
 
@@ -17,12 +19,12 @@ interface Book {
     id: number;
     title: string;
     slug: string;
+    created_at?: string; 
     borrowed_by?: number; 
     returned_by?: number;
     borrowed_date?: string;
     returned_date?: string;
 }
-
 
 const BookTableData: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
@@ -56,6 +58,14 @@ const BookTableData: React.FC = () => {
         }
     };
 
+    dayjs.extend(relativeTime);
+
+    const getTimeAgo = (createdAt: string | undefined): string => {
+        if (!createdAt) return "-";
+        const created = dayjs(createdAt);
+        return created.fromNow();
+    };
+
     return (
         <div className="w-full">
             <h2 className="text-lg font-bold mb-4">Book Data</h2>
@@ -67,6 +77,7 @@ const BookTableData: React.FC = () => {
                         <tr>
                             <th className="border border-gray-300 p-2">Title</th>
                             <th className="border border-gray-300 p-2">Slug</th>
+                            <th className="border border-gray-300 p-2">Created</th>
                             <th className="border border-gray-300 p-2">Borrowed By</th>
                             <th className="border border-gray-300 p-2">Returned By</th>
                             <th className="border border-gray-300 p-2">Borrowed Date</th>
@@ -79,6 +90,7 @@ const BookTableData: React.FC = () => {
                             <tr key={book.id}>
                                 <td className="border border-gray-300 p-2">{book.title}</td>
                                 <td className="border border-gray-300 p-2">{book.slug}</td>
+                                <td className="border border-gray-300 p-2">{getTimeAgo(book.created_at)}</td>
                                 <td className="border border-gray-300 p-2">{book.borrowed_by || "-"}</td>
                                 <td className="border border-gray-300 p-2">{book.returned_by || "-"}</td>
                                 <td className="border border-gray-300 p-2">{book.borrowed_date || "-"}</td>
