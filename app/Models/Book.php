@@ -28,6 +28,18 @@ class Book extends Model
         return $this->belongsTo(User::class, 'returned_by');
     }
 
+    // Accessor to get the name of the borrower
+    public function getBorrowedByNameAttribute()
+    {
+        return $this->borrowedBy ? $this->borrowedBy->name : null;
+    }
+
+    // Accessor to get the name of the returner
+    public function getReturnedByNameAttribute()
+    {
+        return $this->returnedBy ? $this->returnedBy->name : null;
+    }
+
     // Generate unique slug based on title
     public static function boot()
     {
@@ -35,7 +47,6 @@ class Book extends Model
 
         static::creating(function ($model) {
             $model->id = Str::uuid();
-
         });
     }
 }
