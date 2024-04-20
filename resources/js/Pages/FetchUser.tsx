@@ -1,8 +1,7 @@
 import TableData from "@/Components/Tabledata";
 import { Suspense } from "react";
 import { Spinner } from "@/Components/Spinner";
-import { Button } from "@/Components/ui/button";
-import { Trash2 } from 'lucide-react';
+import CreateUser from "@/Components/CreateUser";
   
 export default function Home() {
     return (
@@ -12,7 +11,8 @@ export default function Home() {
       </div>    
         <div className="overflow-x-auto">
           <div className="mb-2 w-full text-right">
-          </div>
+            </div>
+            <CreateUser />
           <Suspense fallback={<Spinner />}>
             <TableData/>
           </Suspense>
