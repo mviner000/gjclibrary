@@ -35,6 +35,7 @@ const CreateUser: React.FC = () => {
         try {
             const response = await axios.post("/api/addnew", userField);
             console.log(response.data);
+            window.location.reload();
         } catch (err) {
             console.log("Something Wrong");
         }

@@ -37,6 +37,7 @@
         "dayjs": "^1.11.10",
         "lucide-react": "^0.371.0",
         "nextjs-routes": "^2.1.0",
+        "react-data-table-component": "^7.6.2",
         "tailwind-merge": "^2.2.2",
         "tailwindcss-animate": "^1.0.7"
     }
