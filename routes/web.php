@@ -27,6 +27,10 @@ Route::get('/books', function () {
     return Inertia::render('FetchBook');
 });
 
+Route::get('/table', function () {
+    return Inertia::render('SampleTable');
+});
+
 
 Route::get('/', function () {
     $latestQuote = Quote::latest()->first(); // Get the latest quote

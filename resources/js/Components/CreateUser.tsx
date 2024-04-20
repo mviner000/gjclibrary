@@ -5,7 +5,7 @@ interface UserField {
     name: string;
     email: string;
     password: string;
-    role: string; // Add role field
+    role: string;
 }
 
 const CreateUser: React.FC = () => {
@@ -13,10 +13,17 @@ const CreateUser: React.FC = () => {
         name: "",
         email: "",
         password: "",
-        role: "student" // Set default role
+        role: "student"
     });
 
-    const changeUserFieldHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUserField({
+            ...userField,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setUserField({
             ...userField,
             [e.target.name]: e.target.value
@@ -28,7 +35,6 @@ const CreateUser: React.FC = () => {
         try {
             const response = await axios.post("/api/addnew", userField);
             console.log(response.data);
-            // Optionally, you can redirect the user or perform other actions after successful creation
         } catch (err) {
             console.log("Something Wrong");
         }
@@ -50,7 +56,7 @@ const CreateUser: React.FC = () => {
                             className="input input-bordered input-primary w-full max-w-xs"
                             placeholder="Full Name..."
                             value={userField.name}
-                            onChange={changeUserFieldHandler}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="mb-5">
@@ -64,7 +70,7 @@ const CreateUser: React.FC = () => {
                             className="input input-bordered input-primary w-full max-w-xs"
                             placeholder="Email..."
                             value={userField.email}
-                            onChange={changeUserFieldHandler}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -79,7 +85,7 @@ const CreateUser: React.FC = () => {
                             className="input input-bordered input-primary w-full max-w-xs"
                             placeholder="Password..."
                             value={userField.password}
-                            onChange={changeUserFieldHandler}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -92,7 +98,7 @@ const CreateUser: React.FC = () => {
                             id="role"
                             className="input input-bordered input-primary w-full max-w-xs"
                             value={userField.role}
-                            onChange={changeUserFieldHandler}
+                            onChange={handleSelectChange}
                         >
                             <option value="superadmin">Superadmin</option>
                             <option value="admin">Admin</option>
